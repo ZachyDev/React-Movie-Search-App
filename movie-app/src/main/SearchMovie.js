@@ -5,8 +5,23 @@ class SearchMovie extends Component {
         super(props)
     
         this.state = {
-             name: ''
+             name: '',
+             movieDb: [],
+             hasError: ''
         }
+    }
+    fetchResult =  (e) => {
+        e.preventDefault();
+        const  query = "avengers"
+        fetch(`https://api.themoviedb.org/3/search/movie?api_key=7bf9c75abbb6e0954ea40e8d52ff1ba4&language=en-US&query=${query}&page=1&include_adult=false`)
+        .then(response => {
+            let data = response.json();
+            console.log(data);
+            this.setState({ movieDb: data})
+        })
+        .catch(error => {
+            this.setState({ hasError: error})
+        })
     }
     handleChange = (e) => {
         this.setState({
@@ -17,8 +32,8 @@ class SearchMovie extends Component {
         const { name } = this.state;
         return (
             <div>
-                <form>
-                    <label forHtml="query" className="label">Movie Name</label>
+                <form onSubmit = { this.fetchResult }>
+                    <label htmlFor="query" className="label">Movie Name</label>
                     <input 
                      type = "text"
                      name = "query" 
