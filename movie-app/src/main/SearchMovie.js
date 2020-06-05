@@ -18,7 +18,7 @@ class SearchMovie extends Component {
         return (
             <div>
                 <form>
-                    <label forHtml="query" className="Label"></label>
+                    <label forHtml="query" className="label">Movie Name</label>
                     <input 
                      type = "text"
                      name = "query" 
