@@ -31,7 +31,7 @@ class SearchMovie extends Component {
         })
     }
     render() {
-        const { query,movieDb,hasError } = this.state;
+        const { query,movieDb} = this.state;
         return (
             <div>
                 <form onSubmit = { this.fetchResult }>
@@ -46,10 +46,16 @@ class SearchMovie extends Component {
                      <button className = "button" type="submit">Search</button>
 
                 </form>
-                <div className="movie-card">
-                    { movieDb.map(movie => movie.title)}
-                    { hasError }
-                </div>
+            
+               { movieDb.filter(movie => movie.poster_path).map(movie => ( 
+                    <div className = "card" key = { movie.id }>
+                        <img  
+                        className = "card--image" 
+                        src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${movie.poster_path}`}
+                        alt={movie.title + ' poster'}
+                        />
+                    </div>
+               ))}
              
             </div>
         )
