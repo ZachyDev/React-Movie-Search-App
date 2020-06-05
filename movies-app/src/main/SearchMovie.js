@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import axios from 'axios';
+import axios from 'axios';
 class SearchMovie extends Component {
     constructor(props) {
         super(props)
@@ -12,16 +12,18 @@ class SearchMovie extends Component {
     }
     fetchResult =  (e) => {
         const { query } =  this.state;
-        e.preventDefault();
-        fetch(`https://api.themoviedb.org/3/search/movie?api_key=7bf9c75abbb6e0954ea40e8d52ff1ba4&language=en-US&query=${query}&page=1&include_adult=false`)
-        .then(response => {
-            let data = response.json();
-            console.log(data);
-            this.setState({ movieDb: data.results})
-        })
-        .catch(error => {
-            this.setState({ hasError: error})
-        })
+        e.preventDefault(); 
+
+        axios.get(`https://api.themoviedb.org/3/search/movie?api_key=7bf9c75abbb6e0954ea40e8d52ff1ba4&language=en-US&query=${query}&page=1&include_adult=false`)
+         .then(res => {
+             console.log(res)
+             const data = res.data.results;
+             console.log(data)
+             this.setState({ movieDb: data})
+         })
+         .catch(()=> {
+             this.setState({ hasError:'something went wrong' })
+         })
     }
     handleChange = (e) => {
         this.setState({
@@ -44,7 +46,11 @@ class SearchMovie extends Component {
                      <button className = "button" type="submit">Search</button>
 
                 </form>
-                { movieDb }
+                <div className="movie-card">
+                    { movieDb.map(movie => movie.title)}
+                    { hasError }
+                </div>
+             
             </div>
         )
     }
