@@ -5,7 +5,7 @@ import './App.css';
 function App() {
   return (
     <div className="container">
-        <h1>Movies Cloud9</h1>
+        <h1 className ="title">Movies Cloud9</h1>
     </div>
   );
 }

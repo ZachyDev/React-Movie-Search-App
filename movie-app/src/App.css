@@ -60,3 +60,8 @@ small{
   max-width: 1000px;
   padding: 40px;
 }
+.title{
+  font-size: 4.4rem;
+  text-align: center;
+
+}
