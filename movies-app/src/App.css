@@ -106,3 +106,22 @@ input {
     margin-bottom: 0;
   }
 }
+.card {
+  padding: 20px 10px;
+  border-radius: 10px;
+  border: 2px solid #ddd;
+  box-shadow: 1px 1px px solid rgba(0,0,0,0.25);
+  margin-bottom: 2rem;
+  background-color: #fff;
+}
+.card-list{
+  margin-top: 4rem;
+}
+.card--title{
+  margin-bottom: 0.5rem;
+  font-size: 3.2rem;
+}
+.card--image{
+  margin: 0 auto;
+  display: block;
+}
