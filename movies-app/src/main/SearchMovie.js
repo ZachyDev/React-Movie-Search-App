@@ -63,6 +63,12 @@ class SearchMovie extends Component {
                     </div>
                ))}
              </div>
+            
+             <div className = "footer">
+                <p>
+                    ZachyDev 2020
+                </p>
+             </div>
             </div>
         )
     }
